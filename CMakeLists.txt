@@ -21,7 +21,7 @@ set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} \
 
 
 
-add_executable(cross_library_execution main.cu Plug/Compute.h Plug/Compute.cpp Thrust_SwitchBoard/ThrustCompute.cuh Thrust_SwitchBoard/ThrustCompute.cu adapter.cu)
+add_executable(cross_library_execution main.cu AbstractCompute.h ThrustCompute.cu adapter.cu AbstractThrustCompute.cuh)
 
 set_property(TARGET cross_library_execution
         PROPERTY CUDA_SEPARABLE_COMPILATION ON)

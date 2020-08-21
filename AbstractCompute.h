@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Compute{
+class AbstractCompute{
 public:
     void virtual selection(vector<int> data, string operation, int value){}
 };

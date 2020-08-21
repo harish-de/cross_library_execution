@@ -70,16 +70,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/hkumar/cross_library_execution/Plug/Compute.cpp">
+		<Unit filename="/home/hkumar/cross_library_execution/AbstractCompute.h">
 			<Option target="cross_library_execution"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/Plug/Compute.h">
+		<Unit filename="/home/hkumar/cross_library_execution/AbstractThrustCompute.cuh">
 			<Option target="cross_library_execution"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/Thrust_SwitchBoard/ThrustCompute.cu">
-			<Option target="cross_library_execution"/>
-		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/Thrust_SwitchBoard/ThrustCompute.cuh">
+		<Unit filename="/home/hkumar/cross_library_execution/ThrustCompute.cu">
 			<Option target="cross_library_execution"/>
 		</Unit>
 		<Unit filename="/home/hkumar/cross_library_execution/adapter.cu">

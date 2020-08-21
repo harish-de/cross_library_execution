@@ -5,11 +5,13 @@
 #include <thrust/host_vector.h>
 #include <thrust/device_vector.h>
 
+#include "AbstractThrustCompute.cuh"
+
 #include <vector>
 #include <string>
 using namespace std;
 
-class ThrustCompute{
+class ThrustCompute: public AbstractThrustCompute{
 public:
     void thrustSelection(vector<int> data, string operation, int value, int new_value){
         std::cout << "Running thrust filter " << std::endl;

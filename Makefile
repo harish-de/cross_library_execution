@@ -143,59 +143,32 @@ cross_library_execution/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/build
 .PHONY : cross_library_execution/fast
 
-Plug/Compute.o: Plug/Compute.cpp.o
+ThrustCompute.o: ThrustCompute.cu.o
 
-.PHONY : Plug/Compute.o
-
-# target to build an object file
-Plug/Compute.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/Plug/Compute.cpp.o
-.PHONY : Plug/Compute.cpp.o
-
-Plug/Compute.i: Plug/Compute.cpp.i
-
-.PHONY : Plug/Compute.i
-
-# target to preprocess a source file
-Plug/Compute.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/Plug/Compute.cpp.i
-.PHONY : Plug/Compute.cpp.i
-
-Plug/Compute.s: Plug/Compute.cpp.s
-
-.PHONY : Plug/Compute.s
-
-# target to generate assembly for a file
-Plug/Compute.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/Plug/Compute.cpp.s
-.PHONY : Plug/Compute.cpp.s
-
-Thrust_SwitchBoard/ThrustCompute.o: Thrust_SwitchBoard/ThrustCompute.cu.o
-
-.PHONY : Thrust_SwitchBoard/ThrustCompute.o
+.PHONY : ThrustCompute.o
 
 # target to build an object file
-Thrust_SwitchBoard/ThrustCompute.cu.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/Thrust_SwitchBoard/ThrustCompute.cu.o
-.PHONY : Thrust_SwitchBoard/ThrustCompute.cu.o
+ThrustCompute.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/ThrustCompute.cu.o
+.PHONY : ThrustCompute.cu.o
 
-Thrust_SwitchBoard/ThrustCompute.i: Thrust_SwitchBoard/ThrustCompute.cu.i
+ThrustCompute.i: ThrustCompute.cu.i
 
-.PHONY : Thrust_SwitchBoard/ThrustCompute.i
+.PHONY : ThrustCompute.i
 
 # target to preprocess a source file
-Thrust_SwitchBoard/ThrustCompute.cu.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/Thrust_SwitchBoard/ThrustCompute.cu.i
-.PHONY : Thrust_SwitchBoard/ThrustCompute.cu.i
+ThrustCompute.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/ThrustCompute.cu.i
+.PHONY : ThrustCompute.cu.i
 
-Thrust_SwitchBoard/ThrustCompute.s: Thrust_SwitchBoard/ThrustCompute.cu.s
+ThrustCompute.s: ThrustCompute.cu.s
 
-.PHONY : Thrust_SwitchBoard/ThrustCompute.s
+.PHONY : ThrustCompute.s
 
 # target to generate assembly for a file
-Thrust_SwitchBoard/ThrustCompute.cu.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/Thrust_SwitchBoard/ThrustCompute.cu.s
-.PHONY : Thrust_SwitchBoard/ThrustCompute.cu.s
+ThrustCompute.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/ThrustCompute.cu.s
+.PHONY : ThrustCompute.cu.s
 
 adapter.o: adapter.cu.o
 
@@ -260,12 +233,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... cross_library_execution"
-	@echo "... Plug/Compute.o"
-	@echo "... Plug/Compute.i"
-	@echo "... Plug/Compute.s"
-	@echo "... Thrust_SwitchBoard/ThrustCompute.o"
-	@echo "... Thrust_SwitchBoard/ThrustCompute.i"
-	@echo "... Thrust_SwitchBoard/ThrustCompute.s"
+	@echo "... ThrustCompute.o"
+	@echo "... ThrustCompute.i"
+	@echo "... ThrustCompute.s"
 	@echo "... adapter.o"
 	@echo "... adapter.i"
 	@echo "... adapter.s"
