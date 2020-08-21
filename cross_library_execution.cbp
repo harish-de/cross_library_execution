@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="cross_library_execution"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\opt\;CMake Files\..\..\..\opt\arrayfire\;CMake Files\..\..\..\opt\arrayfire\share\;CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\;CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cross_library_execution">
+				<Option output="/home/hkumar/cross_library_execution/cross_library_execution" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/arrayfire/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 cross_library_execution"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cross_library_execution/fast">
+				<Option output="/home/hkumar/cross_library_execution/cross_library_execution" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/arrayfire/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 cross_library_execution/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/hkumar/cross_library_execution/Plug/Compute.cpp">
+			<Option target="cross_library_execution"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/Plug/Compute.h">
+			<Option target="cross_library_execution"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/Thrust_SwitchBoard/ThrustCompute.cu">
+			<Option target="cross_library_execution"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/Thrust_SwitchBoard/ThrustCompute.cuh">
+			<Option target="cross_library_execution"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/adapter.cu">
+			<Option target="cross_library_execution"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/main.cu">
+			<Option target="cross_library_execution"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireCPUTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireCPUTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireCUDATargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireCUDATargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireOpenCLTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireOpenCLTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireUnifiedTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireUnifiedTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
