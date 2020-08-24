@@ -20,8 +20,16 @@ set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} \
     ")
 
 
-
-add_executable(cross_library_execution main.cu AbstractCompute.h ThrustCompute.cu adapter.cu AbstractThrustCompute.cuh)
+include_directories(/usr/local/cuda-11.0/include/)
+add_executable(
+        cross_library_execution
+        main.cu
+        AbstractCompute.h
+        ThrustCompute.cu
+#        adapter.cu
+        AbstractThrustCompute.cuh
+        Adapter.h
+        Thrust_something.cu Thrust_something.cuh)
 
 set_property(TARGET cross_library_execution
         PROPERTY CUDA_SEPARABLE_COMPILATION ON)

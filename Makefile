@@ -170,32 +170,32 @@ ThrustCompute.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/ThrustCompute.cu.s
 .PHONY : ThrustCompute.cu.s
 
-adapter.o: adapter.cu.o
+Thrust_something.o: Thrust_something.cu.o
 
-.PHONY : adapter.o
+.PHONY : Thrust_something.o
 
 # target to build an object file
-adapter.cu.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/adapter.cu.o
-.PHONY : adapter.cu.o
+Thrust_something.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/Thrust_something.cu.o
+.PHONY : Thrust_something.cu.o
 
-adapter.i: adapter.cu.i
+Thrust_something.i: Thrust_something.cu.i
 
-.PHONY : adapter.i
+.PHONY : Thrust_something.i
 
 # target to preprocess a source file
-adapter.cu.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/adapter.cu.i
-.PHONY : adapter.cu.i
+Thrust_something.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/Thrust_something.cu.i
+.PHONY : Thrust_something.cu.i
 
-adapter.s: adapter.cu.s
+Thrust_something.s: Thrust_something.cu.s
 
-.PHONY : adapter.s
+.PHONY : Thrust_something.s
 
 # target to generate assembly for a file
-adapter.cu.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/adapter.cu.s
-.PHONY : adapter.cu.s
+Thrust_something.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/Thrust_something.cu.s
+.PHONY : Thrust_something.cu.s
 
 main.o: main.cu.o
 
@@ -236,9 +236,9 @@ help:
 	@echo "... ThrustCompute.o"
 	@echo "... ThrustCompute.i"
 	@echo "... ThrustCompute.s"
-	@echo "... adapter.o"
-	@echo "... adapter.i"
-	@echo "... adapter.s"
+	@echo "... Thrust_something.o"
+	@echo "... Thrust_something.i"
+	@echo "... Thrust_something.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

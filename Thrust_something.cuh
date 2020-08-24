@@ -1,0 +1,12 @@
+//
+// Created by hkumar on 24.08.20.
+//
+
+#ifndef CROSS_LIBRARY_EXECUTION_THRUST_SOMETHING_CUH
+#define CROSS_LIBRARY_EXECUTION_THRUST_SOMETHING_CUH
+class definitions{
+
+    void funtion1();
+
+};
+#endif //CROSS_LIBRARY_EXECUTION_THRUST_SOMETHING_CUH
