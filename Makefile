@@ -89,8 +89,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/hkumar/clion-2020.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/home/hkumar/clion-2020.2/bin/cmake/linux/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -143,59 +143,99 @@ cross_library_execution/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/build
 .PHONY : cross_library_execution/fast
 
-ThrustCompute.o: ThrustCompute.cu.o
+#=============================================================================
+# Target rules for targets named cross_library
 
-.PHONY : ThrustCompute.o
+# Build rule for target.
+cross_library: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cross_library
+.PHONY : cross_library
 
-# target to build an object file
-ThrustCompute.cu.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/ThrustCompute.cu.o
-.PHONY : ThrustCompute.cu.o
+# fast build rule for target.
+cross_library/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/build
+.PHONY : cross_library/fast
 
-ThrustCompute.i: ThrustCompute.cu.i
+Base/BaseCompute.o: Base/BaseCompute.cpp.o
 
-.PHONY : ThrustCompute.i
-
-# target to preprocess a source file
-ThrustCompute.cu.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/ThrustCompute.cu.i
-.PHONY : ThrustCompute.cu.i
-
-ThrustCompute.s: ThrustCompute.cu.s
-
-.PHONY : ThrustCompute.s
-
-# target to generate assembly for a file
-ThrustCompute.cu.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/ThrustCompute.cu.s
-.PHONY : ThrustCompute.cu.s
-
-Thrust_something.o: Thrust_something.cu.o
-
-.PHONY : Thrust_something.o
+.PHONY : Base/BaseCompute.o
 
 # target to build an object file
-Thrust_something.cu.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/Thrust_something.cu.o
-.PHONY : Thrust_something.cu.o
+Base/BaseCompute.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/Base/BaseCompute.cpp.o
+.PHONY : Base/BaseCompute.cpp.o
 
-Thrust_something.i: Thrust_something.cu.i
+Base/BaseCompute.i: Base/BaseCompute.cpp.i
 
-.PHONY : Thrust_something.i
+.PHONY : Base/BaseCompute.i
 
 # target to preprocess a source file
-Thrust_something.cu.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/Thrust_something.cu.i
-.PHONY : Thrust_something.cu.i
+Base/BaseCompute.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/Base/BaseCompute.cpp.i
+.PHONY : Base/BaseCompute.cpp.i
 
-Thrust_something.s: Thrust_something.cu.s
+Base/BaseCompute.s: Base/BaseCompute.cpp.s
 
-.PHONY : Thrust_something.s
+.PHONY : Base/BaseCompute.s
 
 # target to generate assembly for a file
-Thrust_something.cu.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/Thrust_something.cu.s
-.PHONY : Thrust_something.cu.s
+Base/BaseCompute.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/Base/BaseCompute.cpp.s
+.PHONY : Base/BaseCompute.cpp.s
+
+BoostOperations/BoostComputeOps.o: BoostOperations/BoostComputeOps.cpp.o
+
+.PHONY : BoostOperations/BoostComputeOps.o
+
+# target to build an object file
+BoostOperations/BoostComputeOps.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/BoostOperations/BoostComputeOps.cpp.o
+.PHONY : BoostOperations/BoostComputeOps.cpp.o
+
+BoostOperations/BoostComputeOps.i: BoostOperations/BoostComputeOps.cpp.i
+
+.PHONY : BoostOperations/BoostComputeOps.i
+
+# target to preprocess a source file
+BoostOperations/BoostComputeOps.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/BoostOperations/BoostComputeOps.cpp.i
+.PHONY : BoostOperations/BoostComputeOps.cpp.i
+
+BoostOperations/BoostComputeOps.s: BoostOperations/BoostComputeOps.cpp.s
+
+.PHONY : BoostOperations/BoostComputeOps.s
+
+# target to generate assembly for a file
+BoostOperations/BoostComputeOps.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/BoostOperations/BoostComputeOps.cpp.s
+.PHONY : BoostOperations/BoostComputeOps.cpp.s
+
+ThrustOperations/ThrustComputeOps.o: ThrustOperations/ThrustComputeOps.cu.o
+
+.PHONY : ThrustOperations/ThrustComputeOps.o
+
+# target to build an object file
+ThrustOperations/ThrustComputeOps.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ThrustOperations/ThrustComputeOps.cu.o
+.PHONY : ThrustOperations/ThrustComputeOps.cu.o
+
+ThrustOperations/ThrustComputeOps.i: ThrustOperations/ThrustComputeOps.cu.i
+
+.PHONY : ThrustOperations/ThrustComputeOps.i
+
+# target to preprocess a source file
+ThrustOperations/ThrustComputeOps.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ThrustOperations/ThrustComputeOps.cu.i
+.PHONY : ThrustOperations/ThrustComputeOps.cu.i
+
+ThrustOperations/ThrustComputeOps.s: ThrustOperations/ThrustComputeOps.cu.s
+
+.PHONY : ThrustOperations/ThrustComputeOps.s
+
+# target to generate assembly for a file
+ThrustOperations/ThrustComputeOps.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ThrustOperations/ThrustComputeOps.cu.s
+.PHONY : ThrustOperations/ThrustComputeOps.cu.s
 
 main.o: main.cu.o
 
@@ -224,6 +264,33 @@ main.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/main.cu.s
 .PHONY : main.cu.s
 
+test_tpch_queries/executeQueries.o: test_tpch_queries/executeQueries.cpp.o
+
+.PHONY : test_tpch_queries/executeQueries.o
+
+# target to build an object file
+test_tpch_queries/executeQueries.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/test_tpch_queries/executeQueries.cpp.o
+.PHONY : test_tpch_queries/executeQueries.cpp.o
+
+test_tpch_queries/executeQueries.i: test_tpch_queries/executeQueries.cpp.i
+
+.PHONY : test_tpch_queries/executeQueries.i
+
+# target to preprocess a source file
+test_tpch_queries/executeQueries.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/test_tpch_queries/executeQueries.cpp.i
+.PHONY : test_tpch_queries/executeQueries.cpp.i
+
+test_tpch_queries/executeQueries.s: test_tpch_queries/executeQueries.cpp.s
+
+.PHONY : test_tpch_queries/executeQueries.s
+
+# target to generate assembly for a file
+test_tpch_queries/executeQueries.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/test_tpch_queries/executeQueries.cpp.s
+.PHONY : test_tpch_queries/executeQueries.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -232,16 +299,23 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... cross_library"
 	@echo "... cross_library_execution"
-	@echo "... ThrustCompute.o"
-	@echo "... ThrustCompute.i"
-	@echo "... ThrustCompute.s"
-	@echo "... Thrust_something.o"
-	@echo "... Thrust_something.i"
-	@echo "... Thrust_something.s"
+	@echo "... Base/BaseCompute.o"
+	@echo "... Base/BaseCompute.i"
+	@echo "... Base/BaseCompute.s"
+	@echo "... BoostOperations/BoostComputeOps.o"
+	@echo "... BoostOperations/BoostComputeOps.i"
+	@echo "... BoostOperations/BoostComputeOps.s"
+	@echo "... ThrustOperations/ThrustComputeOps.o"
+	@echo "... ThrustOperations/ThrustComputeOps.i"
+	@echo "... ThrustOperations/ThrustComputeOps.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... test_tpch_queries/executeQueries.o"
+	@echo "... test_tpch_queries/executeQueries.i"
+	@echo "... test_tpch_queries/executeQueries.s"
 .PHONY : help
 
 

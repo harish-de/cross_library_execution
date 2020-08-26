@@ -71,27 +71,73 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="cross_library">
+				<Option output="/home/hkumar/cross_library_execution/libcross_library.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/arrayfire/include"/>
+					<Add directory="/usr/local/cuda-11.0/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 cross_library"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cross_library/fast">
+				<Option output="/home/hkumar/cross_library_execution/libcross_library.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/arrayfire/include"/>
+					<Add directory="/usr/local/cuda-11.0/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 cross_library/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 		</Build>
-		<Unit filename="/home/hkumar/cross_library_execution/AbstractCompute.h">
-			<Option target="cross_library_execution"/>
+		<Unit filename="/home/hkumar/cross_library_execution/Base/BaseCompute.cpp">
+			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/AbstractThrustCompute.cuh">
-			<Option target="cross_library_execution"/>
+		<Unit filename="/home/hkumar/cross_library_execution/Base/BaseCompute.h">
+			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/Adapter.h">
-			<Option target="cross_library_execution"/>
+		<Unit filename="/home/hkumar/cross_library_execution/BoostOperations/BoostAdapter.h">
+			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/ThrustCompute.cu">
-			<Option target="cross_library_execution"/>
+		<Unit filename="/home/hkumar/cross_library_execution/BoostOperations/BoostComputeOps.cpp">
+			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/Thrust_something.cu">
-			<Option target="cross_library_execution"/>
+		<Unit filename="/home/hkumar/cross_library_execution/BoostOperations/BoostComputeOps.h">
+			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/Thrust_something.cuh">
-			<Option target="cross_library_execution"/>
+		<Unit filename="/home/hkumar/cross_library_execution/ThrustOperations/ThrustAdapter.cuh">
+			<Option target="cross_library"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/ThrustOperations/ThrustComputeOps.cu">
+			<Option target="cross_library"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/ThrustOperations/ThrustComputeOps.cuh">
+			<Option target="cross_library"/>
 		</Unit>
 		<Unit filename="/home/hkumar/cross_library_execution/main.cu">
 			<Option target="cross_library_execution"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/test_tpch_queries/executeQueries.cpp">
+			<Option target="cross_library"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/test_tpch_queries/executeQueries.h">
+			<Option target="cross_library"/>
 		</Unit>
 		<Unit filename="/home/hkumar/cross_library_execution/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
