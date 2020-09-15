@@ -89,8 +89,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/home/hkumar/clion-2020.2/bin/cmake/linux/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/home/hkumar/clion-2020.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -156,6 +156,60 @@ cross_library/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/build
 .PHONY : cross_library/fast
 
+ArrayFireOperations/ArrayFireAdapter.o: ArrayFireOperations/ArrayFireAdapter.cu.o
+
+.PHONY : ArrayFireOperations/ArrayFireAdapter.o
+
+# target to build an object file
+ArrayFireOperations/ArrayFireAdapter.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ArrayFireOperations/ArrayFireAdapter.cu.o
+.PHONY : ArrayFireOperations/ArrayFireAdapter.cu.o
+
+ArrayFireOperations/ArrayFireAdapter.i: ArrayFireOperations/ArrayFireAdapter.cu.i
+
+.PHONY : ArrayFireOperations/ArrayFireAdapter.i
+
+# target to preprocess a source file
+ArrayFireOperations/ArrayFireAdapter.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ArrayFireOperations/ArrayFireAdapter.cu.i
+.PHONY : ArrayFireOperations/ArrayFireAdapter.cu.i
+
+ArrayFireOperations/ArrayFireAdapter.s: ArrayFireOperations/ArrayFireAdapter.cu.s
+
+.PHONY : ArrayFireOperations/ArrayFireAdapter.s
+
+# target to generate assembly for a file
+ArrayFireOperations/ArrayFireAdapter.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ArrayFireOperations/ArrayFireAdapter.cu.s
+.PHONY : ArrayFireOperations/ArrayFireAdapter.cu.s
+
+ArrayFireOperations/afComputeOps.o: ArrayFireOperations/afComputeOps.cu.o
+
+.PHONY : ArrayFireOperations/afComputeOps.o
+
+# target to build an object file
+ArrayFireOperations/afComputeOps.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ArrayFireOperations/afComputeOps.cu.o
+.PHONY : ArrayFireOperations/afComputeOps.cu.o
+
+ArrayFireOperations/afComputeOps.i: ArrayFireOperations/afComputeOps.cu.i
+
+.PHONY : ArrayFireOperations/afComputeOps.i
+
+# target to preprocess a source file
+ArrayFireOperations/afComputeOps.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ArrayFireOperations/afComputeOps.cu.i
+.PHONY : ArrayFireOperations/afComputeOps.cu.i
+
+ArrayFireOperations/afComputeOps.s: ArrayFireOperations/afComputeOps.cu.s
+
+.PHONY : ArrayFireOperations/afComputeOps.s
+
+# target to generate assembly for a file
+ArrayFireOperations/afComputeOps.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ArrayFireOperations/afComputeOps.cu.s
+.PHONY : ArrayFireOperations/afComputeOps.cu.s
+
 Base/BaseCompute.o: Base/BaseCompute.cpp.o
 
 .PHONY : Base/BaseCompute.o
@@ -182,6 +236,33 @@ Base/BaseCompute.s: Base/BaseCompute.cpp.s
 Base/BaseCompute.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/Base/BaseCompute.cpp.s
 .PHONY : Base/BaseCompute.cpp.s
+
+BoostOperations/BoostAdapter.o: BoostOperations/BoostAdapter.cpp.o
+
+.PHONY : BoostOperations/BoostAdapter.o
+
+# target to build an object file
+BoostOperations/BoostAdapter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/BoostOperations/BoostAdapter.cpp.o
+.PHONY : BoostOperations/BoostAdapter.cpp.o
+
+BoostOperations/BoostAdapter.i: BoostOperations/BoostAdapter.cpp.i
+
+.PHONY : BoostOperations/BoostAdapter.i
+
+# target to preprocess a source file
+BoostOperations/BoostAdapter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/BoostOperations/BoostAdapter.cpp.i
+.PHONY : BoostOperations/BoostAdapter.cpp.i
+
+BoostOperations/BoostAdapter.s: BoostOperations/BoostAdapter.cpp.s
+
+.PHONY : BoostOperations/BoostAdapter.s
+
+# target to generate assembly for a file
+BoostOperations/BoostAdapter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/BoostOperations/BoostAdapter.cpp.s
+.PHONY : BoostOperations/BoostAdapter.cpp.s
 
 BoostOperations/BoostComputeOps.o: BoostOperations/BoostComputeOps.cpp.o
 
@@ -210,6 +291,33 @@ BoostOperations/BoostComputeOps.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/BoostOperations/BoostComputeOps.cpp.s
 .PHONY : BoostOperations/BoostComputeOps.cpp.s
 
+ThrustOperations/ThrustAdapter.o: ThrustOperations/ThrustAdapter.cu.o
+
+.PHONY : ThrustOperations/ThrustAdapter.o
+
+# target to build an object file
+ThrustOperations/ThrustAdapter.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ThrustOperations/ThrustAdapter.cu.o
+.PHONY : ThrustOperations/ThrustAdapter.cu.o
+
+ThrustOperations/ThrustAdapter.i: ThrustOperations/ThrustAdapter.cu.i
+
+.PHONY : ThrustOperations/ThrustAdapter.i
+
+# target to preprocess a source file
+ThrustOperations/ThrustAdapter.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ThrustOperations/ThrustAdapter.cu.i
+.PHONY : ThrustOperations/ThrustAdapter.cu.i
+
+ThrustOperations/ThrustAdapter.s: ThrustOperations/ThrustAdapter.cu.s
+
+.PHONY : ThrustOperations/ThrustAdapter.s
+
+# target to generate assembly for a file
+ThrustOperations/ThrustAdapter.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ThrustOperations/ThrustAdapter.cu.s
+.PHONY : ThrustOperations/ThrustAdapter.cu.s
+
 ThrustOperations/ThrustComputeOps.o: ThrustOperations/ThrustComputeOps.cu.o
 
 .PHONY : ThrustOperations/ThrustComputeOps.o
@@ -237,6 +345,33 @@ ThrustOperations/ThrustComputeOps.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/ThrustOperations/ThrustComputeOps.cu.s
 .PHONY : ThrustOperations/ThrustComputeOps.cu.s
 
+cudfOperations/cudfComputeOps.o: cudfOperations/cudfComputeOps.cu.o
+
+.PHONY : cudfOperations/cudfComputeOps.o
+
+# target to build an object file
+cudfOperations/cudfComputeOps.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/cudfOperations/cudfComputeOps.cu.o
+.PHONY : cudfOperations/cudfComputeOps.cu.o
+
+cudfOperations/cudfComputeOps.i: cudfOperations/cudfComputeOps.cu.i
+
+.PHONY : cudfOperations/cudfComputeOps.i
+
+# target to preprocess a source file
+cudfOperations/cudfComputeOps.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/cudfOperations/cudfComputeOps.cu.i
+.PHONY : cudfOperations/cudfComputeOps.cu.i
+
+cudfOperations/cudfComputeOps.s: cudfOperations/cudfComputeOps.cu.s
+
+.PHONY : cudfOperations/cudfComputeOps.s
+
+# target to generate assembly for a file
+cudfOperations/cudfComputeOps.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/cudfOperations/cudfComputeOps.cu.s
+.PHONY : cudfOperations/cudfComputeOps.cu.s
+
 main.o: main.cu.o
 
 .PHONY : main.o
@@ -263,6 +398,33 @@ main.s: main.cu.s
 main.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library_execution.dir/build.make CMakeFiles/cross_library_execution.dir/main.cu.s
 .PHONY : main.cu.s
+
+oneapiOperations/oneapiComputeOps.o: oneapiOperations/oneapiComputeOps.cpp.o
+
+.PHONY : oneapiOperations/oneapiComputeOps.o
+
+# target to build an object file
+oneapiOperations/oneapiComputeOps.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/oneapiOperations/oneapiComputeOps.cpp.o
+.PHONY : oneapiOperations/oneapiComputeOps.cpp.o
+
+oneapiOperations/oneapiComputeOps.i: oneapiOperations/oneapiComputeOps.cpp.i
+
+.PHONY : oneapiOperations/oneapiComputeOps.i
+
+# target to preprocess a source file
+oneapiOperations/oneapiComputeOps.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/oneapiOperations/oneapiComputeOps.cpp.i
+.PHONY : oneapiOperations/oneapiComputeOps.cpp.i
+
+oneapiOperations/oneapiComputeOps.s: oneapiOperations/oneapiComputeOps.cpp.s
+
+.PHONY : oneapiOperations/oneapiComputeOps.s
+
+# target to generate assembly for a file
+oneapiOperations/oneapiComputeOps.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cross_library.dir/build.make CMakeFiles/cross_library.dir/oneapiOperations/oneapiComputeOps.cpp.s
+.PHONY : oneapiOperations/oneapiComputeOps.cpp.s
 
 test_tpch_queries/executeQueries.o: test_tpch_queries/executeQueries.cpp.o
 
@@ -301,18 +463,36 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... cross_library"
 	@echo "... cross_library_execution"
+	@echo "... ArrayFireOperations/ArrayFireAdapter.o"
+	@echo "... ArrayFireOperations/ArrayFireAdapter.i"
+	@echo "... ArrayFireOperations/ArrayFireAdapter.s"
+	@echo "... ArrayFireOperations/afComputeOps.o"
+	@echo "... ArrayFireOperations/afComputeOps.i"
+	@echo "... ArrayFireOperations/afComputeOps.s"
 	@echo "... Base/BaseCompute.o"
 	@echo "... Base/BaseCompute.i"
 	@echo "... Base/BaseCompute.s"
+	@echo "... BoostOperations/BoostAdapter.o"
+	@echo "... BoostOperations/BoostAdapter.i"
+	@echo "... BoostOperations/BoostAdapter.s"
 	@echo "... BoostOperations/BoostComputeOps.o"
 	@echo "... BoostOperations/BoostComputeOps.i"
 	@echo "... BoostOperations/BoostComputeOps.s"
+	@echo "... ThrustOperations/ThrustAdapter.o"
+	@echo "... ThrustOperations/ThrustAdapter.i"
+	@echo "... ThrustOperations/ThrustAdapter.s"
 	@echo "... ThrustOperations/ThrustComputeOps.o"
 	@echo "... ThrustOperations/ThrustComputeOps.i"
 	@echo "... ThrustOperations/ThrustComputeOps.s"
+	@echo "... cudfOperations/cudfComputeOps.o"
+	@echo "... cudfOperations/cudfComputeOps.i"
+	@echo "... cudfOperations/cudfComputeOps.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... oneapiOperations/oneapiComputeOps.o"
+	@echo "... oneapiOperations/oneapiComputeOps.i"
+	@echo "... oneapiOperations/oneapiComputeOps.s"
 	@echo "... test_tpch_queries/executeQueries.o"
 	@echo "... test_tpch_queries/executeQueries.i"
 	@echo "... test_tpch_queries/executeQueries.s"

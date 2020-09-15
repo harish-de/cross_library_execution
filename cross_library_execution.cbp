@@ -5,7 +5,7 @@
 		<Option title="cross_library_execution"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\opt\;CMake Files\..\..\..\opt\arrayfire\;CMake Files\..\..\..\opt\arrayfire\share\;CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\;CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\opt\;CMake Files\..\..\..\opt\arrayfire\;CMake Files\..\..\..\opt\arrayfire\share\;CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\;CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\;CMake Files\..\..\..\usr\;CMake Files\..\..\..\usr\local\;CMake Files\..\..\..\usr\local\lib\;CMake Files\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\usr\local\lib\cmake\arrow\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/hkumar/cross_library_execution"/>
@@ -44,6 +44,10 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/hkumar/Downloads/ComputeCpp-CE-2.1.0-x86_64-linux-gnu/include"/>
+					<Add directory="/usr/include/glib-2.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
+					<Add directory="/usr/include"/>
 					<Add directory="/usr/local/cuda-11.0/include"/>
 					<Add directory="/opt/arrayfire/include"/>
 				</Compiler>
@@ -61,6 +65,10 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/hkumar/Downloads/ComputeCpp-CE-2.1.0-x86_64-linux-gnu/include"/>
+					<Add directory="/usr/include/glib-2.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
+					<Add directory="/usr/include"/>
 					<Add directory="/usr/local/cuda-11.0/include"/>
 					<Add directory="/opt/arrayfire/include"/>
 				</Compiler>
@@ -78,7 +86,11 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/hkumar/Downloads/ComputeCpp-CE-2.1.0-x86_64-linux-gnu/include"/>
+					<Add directory="/usr/include/glib-2.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
 					<Add directory="/opt/arrayfire/include"/>
+					<Add directory="/usr/include"/>
 					<Add directory="/usr/local/cuda-11.0/include"/>
 				</Compiler>
 				<MakeCommands>
@@ -95,7 +107,11 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/hkumar/Downloads/ComputeCpp-CE-2.1.0-x86_64-linux-gnu/include"/>
+					<Add directory="/usr/include/glib-2.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
 					<Add directory="/opt/arrayfire/include"/>
+					<Add directory="/usr/include"/>
 					<Add directory="/usr/local/cuda-11.0/include"/>
 				</Compiler>
 				<MakeCommands>
@@ -106,10 +122,25 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/hkumar/cross_library_execution/ArrayFireOperations/ArrayFireAdapter.cu">
+			<Option target="cross_library"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/ArrayFireOperations/ArrayFireAdapter.cuh">
+			<Option target="cross_library"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/ArrayFireOperations/afComputeOps.cu">
+			<Option target="cross_library"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/ArrayFireOperations/afComputeOps.cuh">
+			<Option target="cross_library"/>
+		</Unit>
 		<Unit filename="/home/hkumar/cross_library_execution/Base/BaseCompute.cpp">
 			<Option target="cross_library"/>
 		</Unit>
 		<Unit filename="/home/hkumar/cross_library_execution/Base/BaseCompute.h">
+			<Option target="cross_library"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/BoostOperations/BoostAdapter.cpp">
 			<Option target="cross_library"/>
 		</Unit>
 		<Unit filename="/home/hkumar/cross_library_execution/BoostOperations/BoostAdapter.h">
@@ -121,6 +152,9 @@
 		<Unit filename="/home/hkumar/cross_library_execution/BoostOperations/BoostComputeOps.h">
 			<Option target="cross_library"/>
 		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/ThrustOperations/ThrustAdapter.cu">
+			<Option target="cross_library"/>
+		</Unit>
 		<Unit filename="/home/hkumar/cross_library_execution/ThrustOperations/ThrustAdapter.cuh">
 			<Option target="cross_library"/>
 		</Unit>
@@ -130,8 +164,20 @@
 		<Unit filename="/home/hkumar/cross_library_execution/ThrustOperations/ThrustComputeOps.cuh">
 			<Option target="cross_library"/>
 		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/cudfOperations/cudfComputeOps.cu">
+			<Option target="cross_library"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/cudfOperations/cudfComputeOps.cuh">
+			<Option target="cross_library"/>
+		</Unit>
 		<Unit filename="/home/hkumar/cross_library_execution/main.cu">
 			<Option target="cross_library_execution"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/oneapiOperations/oneapiComputeOps.cpp">
+			<Option target="cross_library"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/oneapiOperations/oneapiComputeOps.h">
+			<Option target="cross_library"/>
 		</Unit>
 		<Unit filename="/home/hkumar/cross_library_execution/test_tpch_queries/executeQueries.cpp">
 			<Option target="cross_library"/>
@@ -171,6 +217,21 @@
 		</Unit>
 		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireUnifiedTargets.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../usr/local/lib/cmake/arrow/ArrowConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\arrow\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../usr/local/lib/cmake/arrow/ArrowConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\arrow\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../usr/local/lib/cmake/arrow/ArrowOptions.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\arrow\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../usr/local/lib/cmake/arrow/ArrowTargets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\arrow\"/>
+		</Unit>
+		<Unit filename="/home/hkumar/cross_library_execution/../../../usr/local/lib/cmake/arrow/ArrowTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\arrow\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

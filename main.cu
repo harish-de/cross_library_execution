@@ -5,6 +5,6 @@ using namespace std;
 #include "test_tpch_queries/executeQueries.h"
 
 int main(){
-    executeTpchQueries *queries = new executeTpchQueries();
-    queries->call_tpch6();
+    auto queries = new executeTpchQueries();
+    queries->call_tpch_query(10);
 }
