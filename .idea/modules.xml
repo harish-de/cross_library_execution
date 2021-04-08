@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/cross-library-execution.iml" filepath="$PROJECT_DIR$/.idea/cross-library-execution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/cross_library_execution.iml" filepath="$PROJECT_DIR$/.idea/cross_library_execution.iml" />
     </modules>
   </component>
 </project>
