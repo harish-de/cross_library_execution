@@ -1,0 +1,303 @@
+//
+// Created by hkumar on 26.08.20.
+//
+
+#pragma once
+#include "executeQueries.h"
+#include <vector>
+#include <list>
+//#include "../ThrustOperations/ThrustComputeOps.cuh"
+#include "../ThrustOperations/ThrustAdapter.cuh"
+//#include "../BoostOperations/BoostComputeOps.h"
+#include "../BoostOperations/BoostAdapter.h"
+#include "../ArrayFireOperations/ArrayFireAdapter.cuh"
+
+using namespace std;
+
+void executeTpchQueries::executeQ1(BaseCompute *adapter) {
+
+    vector<vector<int>> lineitemData = adapter->readLineItem("/home/hkumar/tpch-dbgen/data/lineitem.tbl");
+    vector<vector<int>>transposedVec = adapter->getTransposedVector(lineitemData);
+
+    // l_shipdate <= date '1998-12-01' - interval '90' day
+    vector<int> select_1 = adapter->selection(transposedVec[10], "LE", 19980902);
+
+    //prefix-sum & scattering
+    vector<int> prefix_sum = adapter->prefixSum(select_1);
+
+    // delete the unselected indices
+    lineitemData = adapter->deleteTuples(lineitemData,prefix_sum);
+    transposedVec = adapter->getTransposedVector(lineitemData);
+
+    // concatenating l_returnflag and l_linestatus
+    vector<int> returnflag_linestatus = adapter->sumOfVectors(transposedVec[8],transposedVec[9]);
+
+    vector<int> sorted_quantity_returnflag = adapter->sortByKey(returnflag_linestatus, transposedVec[4], 0);
+    vector<int> sorted_returnflag = adapter->sort(returnflag_linestatus,0);
+
+    // sum(l_quantity) as sum_qty
+    vector<int> sum_qty_returnflag = adapter->groupby(sorted_returnflag,sorted_quantity_returnflag);
+
+    // avg(l_quantity) as avg_qty
+    vector<float> avg_key = adapter->avgByKey(sorted_returnflag,sorted_quantity_returnflag);
+
+    // count(*) as count_order
+    vector<int> count_qty_returnflag = adapter->countByKey(sorted_returnflag);
+}
+
+
+void executeTpchQueries::executeQ3(BaseCompute *adapter) {
+    vector<vector<int>> lineitemData = adapter->readLineItem("/home/hkumar/tpch-dbgen/data/lineitem.tbl");
+    vector<vector<int>> ordersData = adapter->readOrders("/home/hkumar/tpch-dbgen/data/orders.tbl");
+    vector<vector<int>> customerData = adapter->readCustomer("/home/hkumar/tpch-dbgen/data/customer.tbl");
+
+    vector<vector<int>>transposedLineitem = adapter->getTransposedVector(lineitemData);
+    vector<vector<int>>transposedCustomer = adapter->getTransposedVector(customerData);
+    vector<vector<int>>transposedOrders = adapter->getTransposedVector(ordersData);
+
+    // o_orderdate < date '1995-03-15'
+    vector<int> select_1 = adapter->selection(transposedOrders[3],"L",19950315);
+
+    //prefix-sum & scattering
+    vector<int> ps_sel_1 = adapter->prefixSum(select_1);
+
+    // delete the unselected indices
+    ordersData = adapter->deleteTuples(ordersData,ps_sel_1);
+    transposedOrders = adapter->getTransposedVector(ordersData);
+
+    // l_shipdate > date '1995-03-15'
+    vector<int> select_2 = adapter->selection(transposedLineitem[10],"G",19950315);
+
+    //prefix-sum & scattering
+    vector<int> ps_sel_2 = adapter->prefixSum(select_2);
+
+    // delete the unselected indices
+    lineitemData = adapter->deleteTuples(lineitemData,ps_sel_2);
+    transposedLineitem = adapter->getTransposedVector(lineitemData);
+
+    // c_mktsegment = 'BUILDING'
+    vector<int> select_3 = adapter->selection(transposedCustomer[3],"EQ",66);
+
+    //prefix-sum & scattering
+    vector<int> ps_sel_3 = adapter->prefixSum(select_3);
+
+    // delete the unselected indices
+    customerData = adapter->deleteTuples(customerData,ps_sel_3);
+    transposedCustomer = adapter->getTransposedVector(customerData);
+
+
+    // c_custkey = o_custkey
+    vector<int> order_value = adapter->join(transposedCustomer[0],transposedOrders[1]);
+    vector<int> temp = adapter->selection(order_value, "G", -1);
+    vector<int> order_index = adapter->prefixSum(temp);
+    vector<int> temp_PK = transposedCustomer[0];
+    vector<vector<int>> customer_order = adapter->joinTables(order_index,temp_PK,order_value);
+    vector<vector<int>> transposedcustomer_order = adapter->getTransposedVector(customer_order);
+
+    // delete the unselected indices
+    ordersData = adapter->deleteTuples(ordersData,order_index);
+    transposedOrders = adapter->getTransposedVector(ordersData);
+
+    // l_orderkey = o_orderkey
+    vector<int> lineitem_value = adapter->join(transposedOrders[0],transposedLineitem[0]);
+    temp = adapter->selection(lineitem_value, "G", -1);
+    vector<int> lineitem_index = adapter->prefixSum(temp);
+    temp_PK = transposedOrders[0];
+    vector<vector<int>> order_lineitem = adapter->joinTables(lineitem_index,temp_PK,lineitem_value);
+    vector<vector<int>> transposedorder_lineitem = adapter->getTransposedVector(order_lineitem);
+
+    // delete the unselected indices
+    lineitemData = adapter->deleteTuples(lineitemData,lineitem_index);
+    transposedLineitem = adapter->getTransposedVector(lineitemData);
+
+    // l_extendedprice * l_discount
+    vector<int> revenue = adapter->product(transposedLineitem[5],transposedLineitem[6]);
+
+    // getting records from orders matching lineitem table
+    vector<int> customer_PK_Index = transposedorder_lineitem[1];
+    vector<int> o_orderdate;
+    vector<int> o_shippriority;
+
+    for (int i = 0; i < customer_PK_Index.size(); ++i) {
+        int index = customer_PK_Index[i];
+        o_orderdate.push_back(transposedOrders[3][index]);
+        o_shippriority.push_back(transposedOrders[4][index]);
+    }
+
+    // concatenating vectors for groupby
+    vector<int> groupby_temp = adapter->sumOfVectors(o_orderdate,o_shippriority);
+    groupby_temp = adapter->sumOfVectors(groupby_temp,transposedLineitem[0]);
+
+    vector<int> sorted_revenue = adapter->sortByKey(groupby_temp, revenue, 0);
+    vector<int> sorted_groupby_keys = adapter->sort(groupby_temp,0);
+
+    // sum(l_quantity) as sum_qty
+    vector<int> sum_revenue = adapter->groupby(sorted_groupby_keys,sorted_revenue);
+
+}
+
+void executeTpchQueries::executeQ4(BaseCompute *adapter){
+
+    vector<vector<int>> lineitemData = adapter->readLineItem("/home/hkumar/tpch-dbgen/data/lineitem.tbl");
+    vector<vector<int>>transposedVec = adapter->getTransposedVector(lineitemData);
+
+    vector<vector<int>> orderData = adapter->readOrders("/home/hkumar/tpch-dbgen/data/orders.tbl");
+    vector<vector<int>>transposedOrder = adapter->getTransposedVector(orderData);
+
+    // l_commitdate < l_receiptdate
+    vector<int> select_1 = adapter->selectionArrays(transposedVec[11],"L",transposedVec[12]);
+    vector<int> prefix_sum = adapter->prefixSum(select_1);
+    lineitemData = adapter->deleteTuples(lineitemData,prefix_sum);
+    transposedVec = adapter->getTransposedVector(lineitemData);
+
+
+    // o_orderdate >= date '1993-07-01'
+    vector<int> select_2 = adapter->selection(transposedOrder[3],"GE",19930701);
+
+    // o_orderdate < date '1993-10-01'
+    vector<int> select_3 = adapter->selection(transposedOrder[3],"L",19931001);
+
+    // o_orderdate >= date '1993-07-01'
+    //        and o_orderdate < date '1993-10-01'
+    vector<int> result_conjunction = adapter->conjunction(select_2,select_3);
+    prefix_sum = adapter->prefixSum(result_conjunction);
+    orderData = adapter->deleteTuples(orderData,prefix_sum);
+    transposedOrder = adapter->getTransposedVector(orderData);
+
+    // l_orderkey = o_orderkey
+    vector<int> join_1 = adapter->join(transposedVec[0],transposedOrder[0]);
+    select_1 = adapter->selection(join_1,"G",-1);
+    prefix_sum = adapter->prefixSum(select_1);
+//    lineitemData = adapter->deleteTuples(lineitemData,prefix_sum);
+//    transposedVec = adapter->getTransposedVector(lineitemData);
+    orderData = adapter->deleteTuples(orderData,prefix_sum);
+    transposedOrder = adapter->getTransposedVector(orderData);
+
+
+    // order by o_orderpriority
+    vector<int> o_orderpriority = adapter->sort(transposedOrder[4],0);
+
+    // group by o_orderpriority, count(*) as order_count
+    vector<int> order_count = adapter->countByKey(o_orderpriority);
+}
+
+
+void executeTpchQueries::executeQ6(BaseCompute *adapter) {
+
+    vector<vector<int>> lineitemData = adapter->readLineItem("/home/hkumar/tpch-dbgen/data/lineitem.tbl");
+    vector<vector<int>>transposedVec = adapter->getTransposedVector(lineitemData);
+
+    vector<int> result_conjunction;
+    vector<int> result_product;
+    int result_sum;
+
+    vector<int> select_1 = adapter->selection(transposedVec[10], "GE", 19940101);
+    vector<int> select_2 = adapter->selection(transposedVec[10], "L", 19950101);
+    vector<int> select_3 = adapter->selection(transposedVec[6],"GE",5);
+    vector<int> select_4 = adapter->selection(transposedVec[6],"LE",7);
+    vector<int> select_5 = adapter->selection(transposedVec[4], "L", 24);
+
+    result_conjunction = adapter->conjunction(select_1,select_2);
+    result_conjunction = adapter->conjunction(result_conjunction,select_3);
+    result_conjunction = adapter->conjunction(result_conjunction,select_4);
+    result_conjunction = adapter->conjunction(result_conjunction,select_5);
+
+    vector<int> prefix_sum = adapter->prefixSum(result_conjunction);
+    lineitemData = adapter->deleteTuples(lineitemData,prefix_sum);
+    transposedVec = adapter->getTransposedVector(lineitemData);
+
+    result_product = adapter->product(transposedVec[5],transposedVec[6]);
+
+    result_sum = adapter->sum(result_product);
+}
+
+
+
+void executeTpchQueries::call_tpch_query(int queryNum) {
+    typedef list<BaseCompute*> libraryList;
+    libraryList libraries;
+
+//  Add libraries here
+    libraries.push_back(new ThrustAdapter(new ThrustCompute));
+    libraries.push_back(new BoostAdapter(new BoostCompute));
+    libraries.push_back(new afAdapter(new afCompute));
+
+    cout << "Executing query " << queryNum << ":" << endl;
+
+    int count = 0;
+    for(auto object : libraries)
+    {
+
+        cout << "**** \n Library " << to_string(count) << " starts \n ****" << endl;
+        switch (queryNum) {
+            case 1:
+                executeQ1(object);
+                break;
+            case 3:
+                executeQ3(object);
+                break;
+            case 4:
+                executeQ4(object);
+                break;
+            case 6:
+                executeQ6(object);
+                break;
+            default:
+                cout << "Please enter test scripts 1,3,4,6" << endl;
+        }
+        count++;
+    }
+}
+
+
+void executeTpchQueries::data_transfer(std::string filename, BaseCompute *adapter){
+    vector<vector<int>> lineitem = adapter->readLineItem(filename);
+    vector<vector<int>> transposedVec = adapter->getTransposedVector(lineitem);
+    vector<int> res1 = adapter->getGPUData(transposedVec[10]);
+    vector<int> res2 = adapter->getCPUData(transposedVec[10]);
+}
+
+void executeTpchQueries::transfer_time(int scalefactor) {
+
+    typedef list<BaseCompute*> libraryList;
+    libraryList libraries;
+
+//  Add libraries here
+    libraries.push_back(new ThrustAdapter(new ThrustCompute));
+    libraries.push_back(new BoostAdapter(new BoostCompute));
+    libraries.push_back(new afAdapter(new afCompute));
+
+    cout << "Executing scale factor " << scalefactor << ":" << endl;
+
+    int count = 0;
+    for(auto object : libraries)
+    {
+
+        cout << "**** \n Library " << to_string(count) << " starts \n ****" << endl;
+        switch (scalefactor) {
+            case 1:
+                data_transfer("/home/hkumar/tpch-dbgen/SF1/lineitem.tbl",object);
+                break;
+	    //case 3:
+              //  data_transfer("/home/hkumar/tpch-dbgen/SF3/lineitem.tbl",object);
+                //break;
+            case 2:
+                data_transfer("/home/hkumar/tpch-dbgen/SF2/lineitem.tbl",object);
+                break;
+	    case 3:
+                data_transfer("/home/hkumar/tpch-dbgen/SF3/lineitem.tbl",object);
+                break;
+            case 4:
+                data_transfer("/home/hkumar/tpch-dbgen/SF4/lineitem.tbl",object);
+                break;
+
+            case 8:
+                data_transfer("/home/hkumar/tpch-dbgen/SF8/lineitem.tbl",object);
+                break;
+            default:
+                cout << "Please enter a scale factor 1,2,4,8" << endl;
+        }
+        count++;
+    }
+}
+

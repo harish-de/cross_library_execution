@@ -15,15 +15,18 @@ class executeTpchQueries{
 public:
     int execution_factor = 2;
     void call_tpch_query(int queryNum);
-    void transfer_time(int scalefactor);
+    void transfer_time();
 
-    void data_transfer(std::string filename, BaseCompute *adapter);
+//    void data_transfer(std::string filename, BaseCompute *adapter);
+    void data_transfer(vector<int> vecData, BaseCompute *adapter);
 
     void executeQ1(BaseCompute *adapter);
 
     void executeQ3(BaseCompute *adapter);
 
     void executeQ4(BaseCompute *adapter);
+
+//    void executeQ5(BaseCompute *adapter);
 
     void executeQ6(BaseCompute *adapter);
 };

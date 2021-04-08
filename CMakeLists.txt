@@ -3,19 +3,11 @@ project(cross_library_execution LANGUAGES CUDA CXX)
 
 set(CMAKE_CUDA_STANDARD 14)
 
-FIND_PACKAGE(ArrayFire REQUIRED)
 FIND_PACKAGE(OpenCL REQUIRED)
-
+FIND_PACKAGE(ArrayFire REQUIRED)
 FIND_PACKAGE(Arrow REQUIRED)
 
-# find_package(ComputeCpp REQUIRED)
-# FIND_PACKAGE(oneAPI REQUIRED)
-
-#include(FindComputeCpp)
-
-# include_directories(${COMPUTECPP_INCLUDE_DIRECTORY})
-
-include_directories(/home/hkumar/Downloads/ComputeCpp-CE-2.1.0-x86_64-linux-gnu/include)
+#include_directories(/home/hkumar/Downloads/ComputeCpp-CE-2.1.0-x86_64-linux-gnu/include)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GLIB_PKG glib-2.0)
@@ -28,9 +20,6 @@ endif()
 INCLUDE_DIRECTORIES(${ArrayFire_INCLUDE_DIRS})
 INCLUDE_DIRECTORIES(${OpenCL_INCLUDE_DIRS})
 
-INCLUDE_DIRECTORIES(${ARROW_INCLUDE_DIR} ${CONDA_LINK_DIRS})
-# include_directories(${ComputeCpp_INCLUDE_DIRS})
-
 add_library(cross_library STATIC
         Base/BaseCompute.cpp
         Base/BaseCompute.h
@@ -40,8 +29,8 @@ add_library(cross_library STATIC
         BoostOperations/BoostComputeOps.cpp
         BoostOperations/BoostComputeOps.h
         BoostOperations/BoostAdapter.h
-        test_tpch_queries/executeQueries.cpp
-        test_tpch_queries/executeQueries.h
+        evaluation/executeQueries.cpp
+        evaluation/executeQueries.h
         ThrustOperations/ThrustAdapter.cu
         ThrustOperations/ThrustAdapter.cuh
         BoostOperations/BoostAdapter.cpp
@@ -49,11 +38,7 @@ add_library(cross_library STATIC
         ArrayFireOperations/afComputeOps.cuh
         ArrayFireOperations/afComputeOps.cu
         ArrayFireOperations/ArrayFireAdapter.cu
-        ArrayFireOperations/ArrayFireAdapter.cuh
-        oneapiOperations/oneapiComputeOps.cpp
-        oneapiOperations/oneapiComputeOps.h
-        cudfOperations/cudfComputeOps.cu
-        cudfOperations/cudfComputeOps.cuh)
+        ArrayFireOperations/ArrayFireAdapter.cuh evaluation/microBenchmark.cpp evaluation/microBenchmark.h)
 
 target_compile_features(cross_library PUBLIC cxx_std_14)
 
@@ -76,7 +61,7 @@ set_property(TARGET cross_library_execution
 
 target_link_libraries(cross_library_execution PRIVATE cross_library)
 
-TARGET_LINK_LIBRARIES(cross_library_execution LINK_PUBLIC ${OpenCL_LIBRARIES} ${ArrayFire_LIBRARIES} ${Arrow_LIBRARIES}) # ${ComputeCPP_LIBRARIES})
+TARGET_LINK_LIBRARIES(cross_library_execution LINK_PUBLIC ${OpenCL_LIBRARIES} ${ArrayFire_LIBRARIES})
 
 set_target_properties(
         cross_library_execution

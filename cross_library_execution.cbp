@@ -8,43 +8,42 @@
 		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\opt\;CMake Files\..\..\..\opt\arrayfire\;CMake Files\..\..\..\opt\arrayfire\share\;CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\;CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\;CMake Files\..\..\..\usr\;CMake Files\..\..\..\usr\local\;CMake Files\..\..\..\usr\local\lib\;CMake Files\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\usr\local\lib\cmake\arrow\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option working_dir="/home/hkumar/gpu_libraries_prototype"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option working_dir="/home/hkumar/gpu_libraries_prototype"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option working_dir="/home/hkumar/gpu_libraries_prototype"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="cross_library_execution">
-				<Option output="/home/hkumar/cross_library_execution/cross_library_execution" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option output="/home/hkumar/gpu_libraries_prototype/cross_library_execution" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hkumar/gpu_libraries_prototype"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/hkumar/Downloads/ComputeCpp-CE-2.1.0-x86_64-linux-gnu/include"/>
 					<Add directory="/usr/include/glib-2.0"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
 					<Add directory="/usr/include"/>
@@ -52,20 +51,19 @@
 					<Add directory="/opt/arrayfire/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 cross_library_execution"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 cross_library_execution"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="cross_library_execution/fast">
-				<Option output="/home/hkumar/cross_library_execution/cross_library_execution" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option output="/home/hkumar/gpu_libraries_prototype/cross_library_execution" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hkumar/gpu_libraries_prototype"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/hkumar/Downloads/ComputeCpp-CE-2.1.0-x86_64-linux-gnu/include"/>
 					<Add directory="/usr/include/glib-2.0"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
 					<Add directory="/usr/include"/>
@@ -73,20 +71,19 @@
 					<Add directory="/opt/arrayfire/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 cross_library_execution/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 cross_library_execution/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="cross_library">
-				<Option output="/home/hkumar/cross_library_execution/libcross_library.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option output="/home/hkumar/gpu_libraries_prototype/libcross_library.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hkumar/gpu_libraries_prototype"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/hkumar/Downloads/ComputeCpp-CE-2.1.0-x86_64-linux-gnu/include"/>
 					<Add directory="/usr/include/glib-2.0"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
 					<Add directory="/opt/arrayfire/include"/>
@@ -94,20 +91,19 @@
 					<Add directory="/usr/local/cuda-11.0/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 cross_library"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 cross_library"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="cross_library/fast">
-				<Option output="/home/hkumar/cross_library_execution/libcross_library.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/hkumar/cross_library_execution"/>
+				<Option output="/home/hkumar/gpu_libraries_prototype/libcross_library.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hkumar/gpu_libraries_prototype"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/hkumar/Downloads/ComputeCpp-CE-2.1.0-x86_64-linux-gnu/include"/>
 					<Add directory="/usr/include/glib-2.0"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
 					<Add directory="/opt/arrayfire/include"/>
@@ -115,122 +111,116 @@
 					<Add directory="/usr/local/cuda-11.0/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 cross_library/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/cross_library_execution/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 cross_library/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/hkumar/gpu_libraries_prototype/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/hkumar/cross_library_execution/ArrayFireOperations/ArrayFireAdapter.cu">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/ArrayFireOperations/ArrayFireAdapter.cu">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/ArrayFireOperations/ArrayFireAdapter.cuh">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/ArrayFireOperations/ArrayFireAdapter.cuh">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/ArrayFireOperations/afComputeOps.cu">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/ArrayFireOperations/afComputeOps.cu">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/ArrayFireOperations/afComputeOps.cuh">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/ArrayFireOperations/afComputeOps.cuh">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/Base/BaseCompute.cpp">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/Base/BaseCompute.cpp">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/Base/BaseCompute.h">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/Base/BaseCompute.h">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/BoostOperations/BoostAdapter.cpp">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/BoostOperations/BoostAdapter.cpp">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/BoostOperations/BoostAdapter.h">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/BoostOperations/BoostAdapter.h">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/BoostOperations/BoostComputeOps.cpp">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/BoostOperations/BoostComputeOps.cpp">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/BoostOperations/BoostComputeOps.h">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/BoostOperations/BoostComputeOps.h">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/ThrustOperations/ThrustAdapter.cu">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/ThrustOperations/ThrustAdapter.cu">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/ThrustOperations/ThrustAdapter.cuh">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/ThrustOperations/ThrustAdapter.cuh">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/ThrustOperations/ThrustComputeOps.cu">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/ThrustOperations/ThrustComputeOps.cu">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/ThrustOperations/ThrustComputeOps.cuh">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/ThrustOperations/ThrustComputeOps.cuh">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/cudfOperations/cudfComputeOps.cu">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/evaluation/executeQueries.cpp">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/cudfOperations/cudfComputeOps.cuh">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/evaluation/executeQueries.h">
 			<Option target="cross_library"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/main.cu">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/evaluation/microBenchmark.cpp">
+			<Option target="cross_library"/>
+		</Unit>
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/evaluation/microBenchmark.h">
+			<Option target="cross_library"/>
+		</Unit>
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/main.cu">
 			<Option target="cross_library_execution"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/oneapiOperations/oneapiComputeOps.cpp">
-			<Option target="cross_library"/>
-		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/oneapiOperations/oneapiComputeOps.h">
-			<Option target="cross_library"/>
-		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/test_tpch_queries/executeQueries.cpp">
-			<Option target="cross_library"/>
-		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/test_tpch_queries/executeQueries.h">
-			<Option target="cross_library"/>
-		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/CMakeLists.txt">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireCPUTargets-relwithdebinfo.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireCPUTargets-relwithdebinfo.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireCPUTargets.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireCPUTargets.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireCUDATargets-relwithdebinfo.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireCUDATargets-relwithdebinfo.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireCUDATargets.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireCUDATargets.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireConfig.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireConfig.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireConfigVersion.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireConfigVersion.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireOpenCLTargets-relwithdebinfo.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireOpenCLTargets-relwithdebinfo.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireOpenCLTargets.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireOpenCLTargets.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireUnifiedTargets-relwithdebinfo.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireUnifiedTargets-relwithdebinfo.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireUnifiedTargets.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../opt/arrayfire/share/ArrayFire/cmake/ArrayFireUnifiedTargets.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\opt\arrayfire\share\ArrayFire\cmake\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../usr/local/lib/cmake/arrow/ArrowConfig.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../usr/local/lib/cmake/arrow/ArrowConfig.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\arrow\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../usr/local/lib/cmake/arrow/ArrowConfigVersion.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../usr/local/lib/cmake/arrow/ArrowConfigVersion.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\arrow\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../usr/local/lib/cmake/arrow/ArrowOptions.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../usr/local/lib/cmake/arrow/ArrowOptions.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\arrow\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../usr/local/lib/cmake/arrow/ArrowTargets-release.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../usr/local/lib/cmake/arrow/ArrowTargets-release.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\arrow\"/>
 		</Unit>
-		<Unit filename="/home/hkumar/cross_library_execution/../../../usr/local/lib/cmake/arrow/ArrowTargets.cmake">
+		<Unit filename="/home/hkumar/gpu_libraries_prototype/../../../usr/local/lib/cmake/arrow/ArrowTargets.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\arrow\"/>
 		</Unit>
 	</Project>

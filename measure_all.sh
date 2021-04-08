@@ -1,10 +1,6 @@
 #!/bin/bash
-for (( i =32; i <= 268435456; i*=2 ))
+for (( i =0; i <= 10; i++ ))
 do
-        printf $i
-        printf ' \t '
-        ./select-baseline $i
-        printf ' \t '
-        ./select-tensor-chunking-newapproach $i
+        ./cross_library_execution $((i*10))
         printf ' \n '
 done

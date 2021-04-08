@@ -15,33 +15,73 @@ vector<int> ThrustAdapter::selection(vector<int> data, string operation, int val
     vector<int> result;
     vector<int> durations;
 
-    for (int i = 0; i <= 100; i++) {
-        auto start = high_resolution_clock::now();  // start time
+//    for (int i = 0; i <= execution_factor; i++) {
+//    for (int i = 0; i <= execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
 
-        // operation here
-        deviceResult = ATC->thrustSelection(deviceData,operation,value);
+    // operation here
+    deviceResult = ATC->thrustSelection(deviceData,operation,value);
 
-        auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
-        if(i>0) {
-            durations.push_back(
-                    duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
-        }
-        else{
-            result = ATC->getThrustCpuData(deviceResult);
-        }
-    }
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//        if(i>0) {
+//            durations.push_back(
+//                    duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }
+//        else{
+    result = ATC->getThrustCpuData(deviceResult);
+//        }
+//    }
 
 
-    std::cout << "Time taken for selection operation " << operation << "_" <<to_string(value)
-              << " is " <<std::accumulate(durations.begin(),
-                                          durations.end(), 0) / durations.size() << " microseconds" << std::endl;
+//    std::cout << "Time taken for selection operation " << operation << "_" <<to_string(value)
+//              << " is " <<  std::accumulate(durations.begin(), durations.end(), 0) / durations.size()
+//            << " nanoseconds" << std::endl;
 
-    thrust::device_vector<int> buffer = result;
-    thrust::exclusive_scan(buffer.begin(),buffer.end(),buffer.begin());
 
-//    vector<int> host_buffer = ATC->getThrustCpuData(buffer);
-//    int size = host_buffer.back();
+    cout << "Received Thrust selection data" <<endl;
+    return result;
+}
+
+vector<int> ThrustAdapter::filter(vector<int> data, string operation, int value) {
+    thrust::device_vector<int> deviceData = ATC->getThrustGpuData(data);
+    thrust::device_vector<int> deviceResult(data.size());
+    vector<int> result;
+    vector<int> durations;
+    // operation here
+    deviceResult = ATC->thrustFilter(deviceData,operation,value);
+    result = ATC->getThrustCpuData(deviceResult);
+    return result;
+}
+
+
+vector<int> ThrustAdapter::selectionArrays(vector<int> lhs, string operation, vector<int> rhs)  {
+    thrust::device_vector<int> deviceLHS = ATC->getThrustGpuData(lhs);
+    thrust::device_vector<int> deviceRHS = ATC->getThrustGpuData(rhs);
+    thrust::device_vector<int> deviceResult(lhs.size());
+
+    vector<int> result;
+//    vector<int> durations;
+
+//    for (int i = 0; i <= execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
+
+    // operation here
+    deviceResult = ATC->thrustSelectionArrays(deviceLHS,operation,deviceRHS);
+
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//        if(i>0) {
+//            durations.push_back(
+//                    duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }
+//        else{
+    result = ATC->getThrustCpuData(deviceResult);
+//        }
+//    }
+//
+//    std::cout << "Time taken for selection operation is " <<std::accumulate(durations.begin(),
+//                                                                            durations.end(), 0) / durations.size() << " nanoseconds" << std::endl;
 
     return result;
 }
@@ -52,26 +92,26 @@ vector<int> ThrustAdapter::conjunction(vector<int> lhs, vector<int> rhs) {
     thrust::device_vector<int> deviceResult(lhs.size());
 
     vector<int> result;
-    vector<int> durations;
+//    vector<int> durations;
 
 
-    for (int i = 0; i <= 100; i++) {
-        auto start = high_resolution_clock::now();  // start time
+//    for (int i = 0; i <= execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
 
-        // operation here
-        deviceResult = ATC->thrustConjunction(deviceLHS,deviceRHS);
+    // operation here
+    deviceResult = ATC->thrustConjunction(deviceLHS,deviceRHS);
 
-        auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
-        if(i>0) {
-            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
-        }else{
-            result = ATC->getThrustCpuData(deviceResult);
-        }
-    }
-
-    std::cout << "Time taken for conjunction operation is " <<std::accumulate(durations.begin(),
-                                                                              durations.end(), 0) / durations.size() << " microseconds" << std::endl;
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//        if(i>0) {
+//            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }else{
+    result = ATC->getThrustCpuData(deviceResult);
+//        }
+//    }
+//
+//    std::cout << "Time taken for conjunction operation is " <<std::accumulate(durations.begin(),
+//                                                                              durations.end(), 0) / durations.size() << " nanoseconds" << std::endl;
     return result;
 }
 
@@ -81,26 +121,26 @@ vector<int> ThrustAdapter::product(vector<int> lhs, vector<int> rhs) {
     thrust::device_vector<int> deviceResult(lhs.size());
 
     vector<int> result;
-    vector<int> durations;
+//    vector<int> durations;
+//
+//
+//    for (int i = 0; i <= execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
 
+    // operation here
+    deviceResult = ATC->thrustProduct(deviceLHS,deviceRHS);
 
-    for (int i = 0; i <= 100; i++) {
-        auto start = high_resolution_clock::now();  // start time
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//        if(i>0) {
+//            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }else{
+    result = ATC->getThrustCpuData(deviceResult);
+//        }
+//    }
 
-        // operation here
-        deviceResult = ATC->thrustProduct(deviceLHS,deviceRHS);
-
-        auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
-        if(i>0) {
-            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
-        }else{
-            result = ATC->getThrustCpuData(deviceResult);
-        }
-    }
-
-    std::cout << "Time taken for product operation is " <<std::accumulate(durations.begin(),
-                                                                          durations.end(), 0) / durations.size() << " microseconds" << std::endl;
+//    std::cout << "Time taken for product operation is " <<std::accumulate(durations.begin(),
+//                                                                          durations.end(), 0) / durations.size() << " nanoseconds" << std::endl;
     return result;
 }
 
@@ -109,24 +149,24 @@ int ThrustAdapter::sum(vector<int> data) {
     thrust::device_vector<int> deviceData = ATC->getThrustGpuData(data);
     int result;
 
-    vector<int> durations;
+//    vector<int> durations;
+//
+//    for (int i = 0; i <= execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
 
-    for (int i = 0; i <= 100; i++) {
-        auto start = high_resolution_clock::now();  // start time
+    // operation here
+    result = ATC->thrustSum(deviceData);
 
-        // operation here
-        result = ATC->thrustSum(deviceData);
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//        if(i>0) {
+//            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }
+//    }
 
-        auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
-        if(i>0) {
-            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
-        }
-    }
-
-    std::cout << "Time taken for sum operation is " <<std::accumulate(durations.begin(),
-                                                                      durations.end(),
-                                                                      0) / durations.size() << " microseconds" << std::endl;
+//    std::cout << "Time taken for sum operation is " <<std::accumulate(durations.begin(),
+//                                                                      durations.end(),
+//                                                                      0) / durations.size() << " nanoseconds" << std::endl;
     return result;
 }
 
@@ -136,27 +176,62 @@ vector<int> ThrustAdapter::sort(vector<int> data, int order) {
 
     thrust::device_vector<int> deviceResult(data.size());
 
-    vector<int> result;
-    vector<int> durations;
+    vector<int> result(data.size());
+//    vector<int> durations;
+//
+//    for (int i = 0; i <= execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
 
-    for (int i = 0; i <= 100; i++) {
-        auto start = high_resolution_clock::now();  // start time
+    // operation here
+    deviceResult = ATC->thrustSort(deviceData,order);
 
-        // operation here
-        deviceResult = ATC->thrustSort(deviceData,order);
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//        if(i>0) {
+//            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }else{
+//            cout << "before conversion" <<endl;
+//            thrust::copy(deviceResult.begin(),deviceResult.end(),result.begin());
+    result = ATC->getThrustCpuData(deviceResult);
+//            cout << "after conversion" <<endl;
+//        }
+//    }
+//
+//
+//    std::cout << "Time taken for sort operation is " <<std::accumulate(durations.begin(),
+//                                                                       durations.end(), 0) / durations.size() << " nanoseconds" << std::endl;
 
-        auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
-        if(i>0) {
-            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
-        }else{
-            result = ATC->getThrustCpuData(deviceResult);
-        }
-    }
+    return result;
+}
 
+vector<int> ThrustAdapter::sortByKey(vector<int> data, vector<int> dependent_data, int order) {
 
-    std::cout << "Time taken for sort operation is " <<std::accumulate(durations.begin(),
-                                                                       durations.end(), 0) / durations.size() << " microseconds" << std::endl;
+    thrust::device_vector<int> deviceData = ATC->getThrustGpuData(data);
+    thrust::device_vector<int> dependentData = ATC->getThrustGpuData(dependent_data);
+
+    thrust::device_vector<int> deviceResult(dependent_data.size());
+
+    vector<int> result(dependent_data.size());
+//    vector<int> durations;
+//
+//    for (int i = 0; i <= execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
+
+    // operation here
+    deviceResult = ATC->thrustSortByKey(deviceData, dependentData, order);
+
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//        if(i>0) {
+//            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }else{
+    result = ATC->getThrustCpuData(deviceResult);
+//        }
+//    }
+//
+//
+//    std::cout << "Time taken for sort before group by operation is " <<std::accumulate(durations.begin(),
+//                                                                                       durations.end(), 0) / durations.size() << " nanoseconds" << std::endl;
 
     return result;
 }
@@ -168,14 +243,14 @@ float ThrustAdapter::avg(vector<int> data) {
 
     vector<int> durations;
 
-    for (int i = 0; i <= 100; i++) {
+    for (int i = 0; i <= execution_factor; i++) {
         auto start = high_resolution_clock::now();  // start time
 
         // operation here
         result = ATC->thrustAvg(deviceData);
 
         auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
+        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
         if(i>0) {
             durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
         }
@@ -183,25 +258,25 @@ float ThrustAdapter::avg(vector<int> data) {
 
     std::cout << "Time taken for average operation is " <<std::accumulate(durations.begin(),
                                                                           durations.end(),
-                                                                          0) / durations.size() << " microseconds" << std::endl;
+                                                                          0) / durations.size() << " nanoseconds" << std::endl;
     return result;
 }
 
-int ThrustAdapter::countIf(vector<int> data) {
+int ThrustAdapter::countIf(vector<int> data,int value) {
 
     thrust::device_vector<int> deviceData = ATC->getThrustGpuData(data);
     int result;
 
     vector<int> durations;
 
-    for (int i = 0; i <= 100; i++) {
+    for (int i = 0; i <= execution_factor; i++) {
         auto start = high_resolution_clock::now();  // start time
 
         // operation here
-        result = ATC->thrustCountIf(deviceData);
+        result = ATC->thrustCountIf(deviceData,value);
 
         auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
+        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
         if(i>0) {
             durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
         }
@@ -209,7 +284,7 @@ int ThrustAdapter::countIf(vector<int> data) {
 
     std::cout << "Time taken for count operation is " <<std::accumulate(durations.begin(),
                                                                         durations.end(),
-                                                                        0) / durations.size() << " microseconds" << std::endl;
+                                                                        0) / durations.size() << " nanoseconds" << std::endl;
 
     return result;
 }
@@ -221,14 +296,14 @@ int ThrustAdapter::count(vector<int> data) {
 
     vector<int> durations;
 
-    for (int i = 0; i <= 100; i++) {
+    for (int i = 0; i <= execution_factor; i++) {
         auto start = high_resolution_clock::now();  // start time
 
         // operation here
         result = ATC->thrustCount(deviceData);
 
         auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
+        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
         if(i>0) {
             durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
         }
@@ -236,152 +311,70 @@ int ThrustAdapter::count(vector<int> data) {
 
     std::cout << "Time taken for count operation is " <<std::accumulate(durations.begin(),
                                                                         durations.end(),
-                                                                        0) / durations.size() << " microseconds" << std::endl;
+                                                                        0) / durations.size() << " nanoseconds" << std::endl;
     return result;
 }
 
-void ThrustAdapter::join2(vector<int> parent, vector<int> child){
-    int offset = pow(2,16);
-
-//        do Block Nested Loop Join
-    int begin_R = 0, begin_S = 0;
-    int end_R = begin_R + offset, end_S = begin_S + offset;
-
-    cout << "parent size: " << parent.size() << endl;
-    cout << "child size: " << child.size() << endl;
-
-    int r_size = parent.size();
-    int s_size = child.size();
-
-    int r[r_size];
-    int s[s_size];
-
-    std::copy(parent.begin(),parent.end(),r);
-    std::copy(child.begin(),child.end(),s);
-    parent.clear();
-    child.clear();
-
-    int sum = 0;
-    vector<int> temp_R(offset);
-    vector<int> temp_S(offset);
-    vector<int> durations;
-    vector<int> result;
-    vector<vector<int>> joinResult;
-
-    for (int i = 0; i < 1; i++) {
-        auto start = high_resolution_clock::now();  // start time
-
-        thrust::device_vector<int> deviceResult(offset); //*offset
-
-        for (auto&& i: parent | sliced(0, r_size/offset)){
-            for(auto&& j: child | sliced(0, s_size/offset)){
-
-                std::copy(r+begin_R,r+end_R,temp_R.begin());
-                std::copy(s+begin_S,s+end_S,temp_S.begin());
-
-                thrust::device_vector<int> deviceLHS = ATC->getThrustGpuData(temp_R);
-                thrust::device_vector<int> deviceRHS = ATC->getThrustGpuData(temp_S);
-//                thrust::device_vector<int> deviceResult(temp_R.size() * temp_S.size());
-
-//                cout << "R: ( " << begin_R << " , " << end_R << ") and "
-//                                                                "S: ( " << begin_S << " , " << end_S << endl;
-
-                deviceResult = ATC->thrustJoin(deviceLHS,deviceRHS);
-
-                result = ATC->getThrustCpuData(deviceResult);
-//                sum += thrust::count(deviceResult.begin(),deviceResult.end(),1);
-
-                vector<vector<int>> tempJoin = joinTuples(temp_R,temp_S,offset,result,i,j,offset);
-
-                joinResult.insert(joinResult.end(),tempJoin.begin(),tempJoin.end());
-
-                begin_S += offset;
-                end_S += offset;
-            }
-            cout << "R: ( " << begin_R << " , " << end_R << " ) " << endl;
-//            cout << "Sum: " << sum << endl;
-            begin_S = 0;
-            end_S = begin_S + offset;
-            begin_R += offset;
-            end_R += offset;
-        }
-
-        auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
-        cout << "Time taken: " << duration.count() << endl;
-        if(i>0) {
-            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
-        }
-    }
-
-    cout << "Total number of joins: " << sum;
-}
 
 vector<int> ThrustAdapter::join(vector<int> parent, vector<int> child) {
     thrust::device_vector<int> deviceLHS = ATC->getThrustGpuData(parent);
     thrust::device_vector<int> deviceRHS = ATC->getThrustGpuData(child);
-//    cout<<parent.size() <<" : "<<child.size()<<" : "<<parent.size() * child.size()*sizeof(int)<<" : total allocated size"<<endl;
-//    thrust::device_vector<int> deviceResult(parent.size() * child.size());
 
     thrust::device_vector<int> deviceResult(child.size());
-
     vector<int> result;
-    vector<int> durations;
+    deviceResult = ATC->thrustJoin(deviceLHS,deviceRHS);
 
-    int R = 0;
-    int S = 0;
-    int offset = 50;
-
-
-
-//    for(auto it = deviceLHS.begin()+R; it != deviceLHS.begin()+R+offset; it++){
-//        for(auto it2 = deviceRHS.begin()+S; it2 != deviceRHS.begin()+S+offset;it2++){
-//
-//            thrust::device_reference<int> valueLHS = *it;
-//            thrust::device_reference<int> valueRHS = *it;
-//
-//            S = S+ offset;
-//        }
-//        R = R+ offset;
-//    }
-
-
-    for (int i = 0; i <= 100; i++) {
-        auto start = high_resolution_clock::now();  // start time
-
-        // operation here
-        deviceResult = ATC->thrustJoin(deviceLHS,deviceRHS);
-
-        auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
-        if(i>0) {
-            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
-        }else{
-            result = ATC->getThrustCpuData(deviceResult);
-        }
-    }
-
-    std::cout << "Time taken for join operation is " <<std::accumulate(durations.begin(),
-                                                                       durations.end(), 0) / durations.size() << " microseconds" << std::endl;
+    result = ATC->getThrustCpuData(deviceResult);
     return result;
 }
 
 vector<int> ThrustAdapter::prefixSum(vector<int> data) {
     thrust::device_vector<int> deviceData = ATC->getThrustGpuData(data);
-    int count = ATC->thrustCountIf(deviceData);
+    int count = ATC->thrustCountIf(deviceData,1);
+    thrust::device_vector<int> deviceResult(count);
+
+//    vector<int> durations;
+    vector<int> result;
+
+//    for (int i = 0; i <= execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
+
+    // operation here
+    deviceResult = ATC->thrustPrefixSum(deviceData);
+
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//        if(i>0) {
+//            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }else{
+    result = ATC->getThrustCpuData(deviceResult);
+//        }
+//    }
+//
+//    std::cout << "Time taken for prefix sum operation is " <<std::accumulate(durations.begin(),
+//                                                                             durations.end(),
+//                                                                             0) / durations.size() << " nanoseconds" << std::endl;
+
+    return result;
+}
+
+vector<int> ThrustAdapter::prefixSum(vector<int> bitmapdata, vector<int> colData)  {
+    thrust::device_vector<int> deviceBitmapData = ATC->getThrustGpuData(bitmapdata);
+    thrust::device_vector<int> deviceColumnData = ATC->getThrustGpuData(colData);
+    int count = ATC->thrustCountIf(deviceBitmapData,1);
     thrust::device_vector<int> deviceResult(count);
 
     vector<int> durations;
     vector<int> result;
 
-    for (int i = 0; i <= 100; i++) {
+    for (int i = 0; i <= execution_factor; i++) {
         auto start = high_resolution_clock::now();  // start time
 
         // operation here
-        deviceResult = ATC->thrustPrefixSum(deviceData);
+        deviceResult = ATC->thrustPrefixSum(deviceBitmapData,deviceColumnData);
 
         auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
+        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
         if(i>0) {
             durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
         }else{
@@ -389,9 +382,9 @@ vector<int> ThrustAdapter::prefixSum(vector<int> data) {
         }
     }
 
-    std::cout << "Time taken for prefix sum operation is " <<std::accumulate(durations.begin(),
+    std::cout << "Time taken for scattering operation is " <<std::accumulate(durations.begin(),
                                                                              durations.end(),
-                                                                             0) / durations.size() << " microseconds" << std::endl;
+                                                                             0) / durations.size() << " nanoseconds" << std::endl;
 
     return result;
 }
@@ -403,14 +396,14 @@ int ThrustAdapter::findMax(vector<int> data) {
 
     vector<int> durations;
 
-    for (int i = 0; i <= 100; i++) {
+    for (int i = 0; i <= execution_factor; i++) {
         auto start = high_resolution_clock::now();  // start time
 
         // operation here
         result = ATC->thrustFindMax(deviceData);
 
         auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
+        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
         if(i>0) {
             durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
         }
@@ -418,7 +411,7 @@ int ThrustAdapter::findMax(vector<int> data) {
 
     std::cout << "Time taken for findMax operation is " <<std::accumulate(durations.begin(),
                                                                           durations.end(),
-                                                                          0) / durations.size() << " microseconds" << std::endl;
+                                                                          0) / durations.size() << " nanoseconds" << std::endl;
     return result;
 }
 
@@ -429,14 +422,14 @@ int ThrustAdapter::findMin(vector<int> data) {
 
     vector<int> durations;
 
-    for (int i = 0; i <= 100; i++) {
+    for (int i = 0; i <= execution_factor; i++) {
         auto start = high_resolution_clock::now();  // start time
 
         // operation here
         result = ATC->thrustFindMin(deviceData);
 
         auto stop = high_resolution_clock::now(); // stop time
-        auto duration = duration_cast<microseconds>(stop - start); // time taken for performing the operation
+        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
         if(i>0) {
             durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
         }
@@ -444,6 +437,253 @@ int ThrustAdapter::findMin(vector<int> data) {
 
     std::cout << "Time taken for findMin operation is " <<std::accumulate(durations.begin(),
                                                                           durations.end(),
-                                                                          0) / durations.size() << " microseconds" << std::endl;
+                                                                          0) / durations.size() << " nanoseconds" << std::endl;
     return result;
+}
+
+//vector<int> ThrustAdapter::hash_join(vector<int> parent, vector<int> child) {
+//    thrust::device_vector<int> deviceLHS = ATC->getThrustGpuData(parent);
+//    thrust::device_vector<int> deviceRHS = ATC->getThrustGpuData(child);
+//
+//    thrust::device_vector<int> deviceResult(child.size());
+//
+//    vector<int> result;
+//    vector<int> durations;
+//
+//    for (int i = 0; i < execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
+//
+//        // operation here
+//        deviceResult = ATC->thrustHashJoin(deviceLHS,deviceRHS);
+//
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//
+////        cout << "Time taken for hash join: " << duration.count() << endl;
+//
+//        if(i>0) {
+//            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }else{
+//            result = ATC->getThrustCpuData(deviceResult);
+//        }
+//    }
+//
+//
+//
+//    std::cout << "Time taken for hash join operation is " <<std::accumulate(durations.begin(),
+//                                                                       durations.end(), 0) / durations.size() << " nanoseconds" << std::endl;
+//    return result;
+//}
+
+//vector<int> ThrustAdapter::IN(vector<int> dataToFilter,
+//                              vector<int> refData,
+//                              vector<int> prefixSum){
+//
+//    thrust::device_vector<int> deviceData= ATC->getThrustGpuData(dataToFilter);
+//    thrust::device_vector<int> deviceRefData = ATC->getThrustGpuData(refData);
+//    thrust::device_vector<int> devicePS = ATC->getThrustGpuData(prefixSum);
+//
+//    thrust::device_vector<int> deviceResult(dataToFilter.size());
+//
+//    vector<int> result;
+//    vector<int> durations;
+//
+//    for (int i = 0; i < execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
+//
+//        // operation here
+//        deviceResult = ATC->thrustIN(deviceData,deviceRefData,devicePS);
+//
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//
+////        cout << "Time taken for IN operation: " << duration.count() << endl;
+//
+//        if(i>0) {
+//            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }else{
+//            result = ATC->getThrustCpuData(deviceResult);
+//        }
+//    }
+//
+//
+//
+//    std::cout << "Time taken for IN operation is " <<std::accumulate(durations.begin(),
+//                                                                       durations.end(), 0) / durations.size() << " nanoseconds" << std::endl;
+//    return result;
+//
+//}
+
+vector<int> ThrustAdapter::groupby(vector<int> keys,
+                                   vector<int> values){
+
+    thrust::device_vector<int> deviceKeys= ATC->getThrustGpuData(keys);
+    thrust::device_vector<int> deviceData = ATC->getThrustGpuData(values);
+
+    thrust::device_vector<int>deviceResult;
+
+    vector<int> result;
+
+//    vector<int> durations;
+
+//    for (int i = 0; i < execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
+
+    // operation here
+    deviceResult = ATC->thrustGroupBy(deviceKeys,deviceData);
+//
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//
+////        cout << "Time taken for IN operation: " << duration.count() << endl;
+//
+//        if(i>0) {
+//            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }else{
+    result = ATC->getThrustCpuData(deviceResult);
+//        }
+//    }
+//
+//    std::cout << "Time taken for group by operation is " <<std::accumulate(durations.begin(),
+//                                                                           durations.end(), 0) / durations.size() << " nanoseconds" << std::endl;
+
+    return result;
+}
+
+vector<int> ThrustAdapter::countByKey(vector<int> data) {
+
+    thrust::device_vector<int> deviceData = ATC->getThrustGpuData(data);
+
+    thrust::device_vector<int>deviceResult;
+
+    vector<int> result;
+//    vector<int> durations;
+//
+//    for (int i = 0; i < execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
+    // operation here
+    deviceResult = ATC->thrustCountByKey(deviceData);
+
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//
+////        cout << "Time taken for IN operation: " << duration.count() << endl;
+//
+//        if(i>0) {
+//            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }else{
+    result = ATC->getThrustCpuData(deviceResult);
+//        }
+//    }
+//
+//    std::cout << "Time taken for count by key operation is "
+//              <<std::accumulate(durations.begin(),durations.end(), 0) / durations.size() << " nanoseconds" << std::endl;
+
+    return result;
+}
+
+vector<float> ThrustAdapter::avgByKey(vector<int> keys, vector<int> values) {
+
+    thrust::device_vector<int> deviceKeys = ATC->getThrustGpuData(keys);
+    thrust::device_vector<int> deviceVals = ATC->getThrustGpuData(values);
+
+    thrust::device_vector<float>deviceResult;
+
+    vector<float> result;
+
+//    vector<int> durations;
+//
+//    for (int i = 0; i < execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
+
+    // operation here
+    deviceResult = ATC->thrustAvgByKey(deviceKeys,deviceVals);
+
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//
+//        if(i>0) {
+//            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }else{
+    result = ATC->getThrustCpuData(deviceResult);
+//        }
+//    }
+//
+//    std::cout << "Time taken for average by key operation is " <<std::accumulate(durations.begin(),
+//                                                                                 durations.end(), 0) / durations.size() << " nanoseconds" << std::endl;
+
+    return result;
+}
+
+
+vector<int> ThrustAdapter::sumOfVectors(vector<int> array1, vector<int> array2) {
+
+    thrust::device_vector<int> deviceVec1 = ATC->getThrustGpuData(array1);
+    thrust::device_vector<int> deviceVec2 = ATC->getThrustGpuData(array2);
+    thrust::device_vector<int>deviceResult;
+    vector<int> result;
+//    vector<int> durations;
+//
+//    for (int i = 0; i < execution_factor; i++) {
+//        auto start = high_resolution_clock::now();  // start time
+
+    // operation here
+    deviceResult = ATC->thrustSumOfVectors(deviceVec1,deviceVec2);
+
+//        auto stop = high_resolution_clock::now(); // stop time
+//        auto duration = duration_cast<nanoseconds>(stop - start); // time taken for performing the operation
+//
+//        if(i>0) {
+//            durations.push_back(duration.count());  // since the initial load time is high, calculation is started from 2nd iteration
+//        }else{
+    result = ATC->getThrustCpuData(deviceResult);
+//        }
+//    }
+//    std::cout << "Time taken for Vector concatenation operation is " <<std::accumulate(durations.begin(),
+//                                                                                       durations.end(), 0) / durations.size() << " nanoseconds" << std::endl;
+    return result;
+}
+
+vector<int> ThrustAdapter::getGPUData(vector<int> cpudata) {
+
+    vector<int> result;
+    thrust::device_vector<int> deviceResult = ATC->getThrustGpuData(cpudata);
+    cpudata.clear();
+    cpudata.shrink_to_fit();
+    return result;
+}
+
+vector<int> ThrustAdapter::cpu2gpu(vector<int> cpudata) {
+    vector<int> result;
+    thrust::device_vector<int> deviceResult = ATC->thrustcpu2gpu(cpudata);
+    cpudata.clear();
+    cpudata.shrink_to_fit();
+    return result;
+}
+
+vector<int> ThrustAdapter::getCPUData(vector<int> data) {
+
+    thrust::device_vector<int> gpudata = ATC->getThrustGpuData(data);
+    vector<int> result;
+    result = ATC->getThrustCpuData(gpudata);
+    return result;
+}
+
+vector<int> ThrustAdapter::gpu2cpu(vector<int> data) {
+    thrust::device_vector<int> gpudata = ATC->thrustcpu2gpu(data);
+    vector<int> result;
+    result = ATC->thrustgpu2cpu(gpudata);
+    return result;
+}
+
+void ThrustAdapter::scatter(vector<int> data, vector<int> map) {
+    thrust::device_vector<int> gpudata = ATC->getThrustGpuData(data);
+    thrust::device_vector<int> gpumap = ATC->getThrustGpuData(map);
+    ATC->thrustScatter(data,map);
+}
+
+void ThrustAdapter::gather(vector<int> data, vector<int> map) {
+    thrust::device_vector<int> gpudata = ATC->getThrustGpuData(data);
+    thrust::device_vector<int> gpumap = ATC->getThrustGpuData(map);
+    ATC->thrustGather(data,map);
 }
